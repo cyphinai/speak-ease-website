@@ -1,0 +1,15 @@
+{
+  "name": "speakease-landing",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node start.js",
+    "dev": "run-script-os",
+    "dev:win32": "py dev_server.py 2>nul || python dev_server.py",
+    "dev:default": "python3 dev_server.py"
+  },
+  "dependencies": {
+    "run-script-os": "^1.1.6",
+    "serve": "^14.2.4"
+  }
+}
