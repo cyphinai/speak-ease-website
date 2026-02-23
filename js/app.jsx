@@ -1,25 +1,32 @@
 const { useState, useEffect, useRef } = React;
 
-const ChatBubbleIcon = () => (
-  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12z"/>
-  </svg>
-);
-
 function PhoneStatusBar() {
-  const [dayStr, setDayStr] = useState('');
-  useEffect(() => {
-    setDayStr(new Date().toLocaleDateString('en-US', { weekday: 'short' }));
-  }, []);
   return (
     <div className="phone-status-bar">
       <div className="phone-status-left">
         <span className="phone-status-time">9:41</span>
-        <span className="phone-status-date">{dayStr || 'Fri'}</span>
       </div>
-      <div className="phone-dynamic-island" />
+      <div className="phone-dynamic-island">
+        <span className="phone-dynamic-island-camera" aria-hidden="true" />
+      </div>
       <div className="phone-status-right">
-        <span>100%</span>
+        <svg className="phone-status-icon phone-status-signal" viewBox="0 0 16 10" fill="currentColor" aria-hidden="true">
+          <rect x="0" y="6.2" width="2.2" height="3.8" rx="0.4" />
+          <rect x="4" y="4.4" width="2.2" height="5.6" rx="0.4" />
+          <rect x="8" y="2.6" width="2.2" height="7.4" rx="0.4" />
+          <rect x="12" y="0.8" width="2.2" height="9.2" rx="0.4" />
+        </svg>
+        <svg className="phone-status-icon phone-status-wifi" viewBox="0 0 14 9" fill="none" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round" aria-hidden="true">
+          <path d="M3 3.2 a 4 4 0 0 1 8 0" />
+          <path d="M4.6 4.8 a 2.4 2.4 0 0 1 4.8 0" />
+          <path d="M6.2 6.2 a 1 1 0 0 1 1.6 0" />
+          <circle cx="7" cy="7.6" r="0.5" fill="currentColor" />
+        </svg>
+        <svg className="phone-status-icon phone-status-battery" viewBox="0 0 22 10" fill="none" stroke="currentColor" strokeWidth="1" aria-hidden="true">
+          <rect x="0.5" y="1.2" width="16" height="7.6" rx="1.5" fill="none" />
+          <rect x="1.5" y="2.2" width="13" height="5.6" rx="0.8" fill="currentColor" />
+          <rect x="16.5" y="2.8" width="1.2" height="4.4" rx="0.3" fill="currentColor" />
+        </svg>
       </div>
     </div>
   );
@@ -28,12 +35,7 @@ function PhoneStatusBar() {
 function HeaderLogo() {
   return (
     <div className="header-logo-wrap">
-      <div className="header-logo-mark">
-        <ChatBubbleIcon />
-      </div>
-      <span className="header-logo-text">
-        <span className="primary">Speak</span><span className="accent">Ease</span>
-      </span>
+      <img src="/logo.png" alt="Speakease" className="header-logo-img" />
     </div>
   );
 }
@@ -74,21 +76,16 @@ function App() {
       id: 'home',
       title: "Today's plan",
       copy: "Get a personalized daily plan: warm-up phrases, lessons with audio, conversation role-plays, and quick quizzes. Track your progress with streaks and see your plan complete in real time.",
-      screenshot: 'assets/screens/home.png',
+      screenshot: '/assets/screens/home.png',
       mockup: (
         <div className="mockup-home app-content">
           <div className="hero-logo-wrap" style={{ marginBottom: 10 }}>
-            <div className="hero-logo-mark" style={{ width: 32, height: 32 }}>
-              <ChatBubbleIcon />
-            </div>
-            <span className="hero-logo-text" style={{ fontSize: '1rem' }}>
-              <span className="primary">Speak</span><span className="accent">Ease</span>
-            </span>
+            <img src="/logo.png" alt="Speakease" style={{ height: 56, width: 'auto' }} />
           </div>
           <div className="mockup-greeting">Hi Zara, ready to learn?</div>
           <div className="mockup-sub">Your AI tutor prepared a focused plan today.</div>
           <div className="mockup-plan-label">Today's plan · 1/4 complete</div>
-          <div className="mockup-plan-item" style={{ background: 'rgba(52,168,83,0.15)' }} />
+          <div className="mockup-plan-item" style={{ background: 'rgba(34,172,172,0.15)' }} />
           <div className="mockup-plan-item active" />
           <div className="mockup-plan-item" />
           <div className="mockup-plan-item" />
@@ -103,7 +100,7 @@ function App() {
       id: 'learn',
       title: 'Lessons with audio',
       copy: 'Practice real-world phrases with native-style audio. Ordering coffee, airport phrases, greetings, small talk – each lesson includes pronunciation tips, vocabulary, and a prompter that highlights lines as they play.',
-      screenshot: 'assets/screens/learn.png',
+      screenshot: '/assets/screens/learn.png',
       mockup: (
         <div className="mockup-learn app-content">
           <div className="mockup-section-label">Suggested lessons</div>
@@ -117,7 +114,7 @@ function App() {
       id: 'practice',
       title: 'AI tutor chat',
       copy: 'Chat with your AI language coach anytime. Role-play scenarios, get feedback on your phrasing, and practice conversation in a low-pressure environment. Quick prompts help you start or deepen the conversation.',
-      screenshot: 'assets/screens/practice.png',
+      screenshot: '/assets/screens/practice.png',
       mockup: (
         <div className="mockup-practice app-content">
           <div className="mockup-chat-title">Practice with your AI tutor</div>
@@ -132,7 +129,7 @@ function App() {
       id: 'progress',
       title: 'Track your progress',
       copy: 'See your weekly minutes, streaks, and achievements. Badges reward consistency and milestones. Set daily and weekly goals to stay motivated and build a lasting learning habit.',
-      screenshot: 'assets/screens/progress.png',
+      screenshot: '/assets/screens/progress.png',
       mockup: (
         <div className="mockup-progress app-content">
           <div className="mockup-label">This week</div>
@@ -151,7 +148,7 @@ function App() {
       id: 'profile',
       title: 'Profile & settings',
       copy: 'Adjust learning goals, speech feedback, notifications, and privacy. Manage your account and preferences so the app adapts to how you learn best.',
-      screenshot: 'assets/screens/profile.png',
+      screenshot: '/assets/screens/profile.png',
       mockup: (
         <div className="mockup-profile app-content">
           <div className="mockup-avatar">Z</div>
@@ -187,12 +184,7 @@ function App() {
                 AI-powered learning
               </div>
               <div className="hero-logo-wrap">
-                <div className="hero-logo-mark">
-                  <ChatBubbleIcon />
-                </div>
-                <span className="hero-logo-text">
-                  <span className="primary">Speak</span><span className="accent">Ease</span>
-                </span>
+                <img src="/logo.png" alt="Speakease" className="hero-logo-img" />
               </div>
             </div>
             <h1 className="hero-title">
@@ -332,7 +324,7 @@ function App() {
       </section>
 
       <footer className="footer">
-        <p className="footer-brand">SpeakEase</p>
+        <img src="/logo.png" alt="Speakease" className="footer-logo-img" />
         <p>AI-powered language learning</p>
         <div className="footer-links">
           <a href="/app.apk" download="SpeakEase.apk">Download APK</a>

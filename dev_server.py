@@ -5,15 +5,26 @@ import webbrowser
 import threading
 import time
 
-PORT = 3000
+PORTS_TO_TRY = [3000, 3001, 8080, 5000]
 
-def open_browser():
+def open_browser(port):
     time.sleep(1.5)
-    webbrowser.open(f"http://localhost:{PORT}")
+    webbrowser.open(f"http://localhost:{port}")
 
-threading.Thread(target=open_browser, daemon=True).start()
+httpd = None
+for PORT in PORTS_TO_TRY:
+    try:
+        socketserver.TCPServer.allow_reuse_address = True
+        httpd = socketserver.TCPServer(("", PORT), http.server.SimpleHTTPRequestHandler)
+        break
+    except OSError:
+        continue
 
-with socketserver.TCPServer(("", PORT), http.server.SimpleHTTPRequestHandler) as httpd:
-    print(f"Serving at http://localhost:{PORT}")
-    print("Press Ctrl+C to stop")
-    httpd.serve_forever()
+if httpd is None:
+    print("No free port found. Try closing other servers using 3000, 3001, 8080, or 5000.")
+    raise SystemExit(1)
+
+threading.Thread(target=open_browser, args=(PORT,), daemon=True).start()
+print(f"Serving at http://localhost:{PORT}")
+print("Press Ctrl+C to stop")
+httpd.serve_forever()
