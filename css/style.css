@@ -475,8 +475,8 @@ h1, h2, h3, .hero-title, .section-title {
 .phone-status-signal { width: 14px; height: 9px; }
 .phone-status-wifi  { width: 15px; height: 8px; }
 .phone-status-battery {
-  width: 20px;
-  height: 9px;
+  width: 10px;
+  height: 10px;
   color: #fff;
 }
 .phone-hero-body { flex: 1; min-height: 0; position: relative; }
