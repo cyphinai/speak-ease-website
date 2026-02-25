@@ -85,7 +85,7 @@ h1, h2, h3, .hero-title, .section-title {
 }
 
 .header-logo-img {
-  height: 72px;
+  height: 65px;
   width: auto;
   object-fit: contain;
 }
@@ -108,6 +108,11 @@ h1, h2, h3, .hero-title, .section-title {
 .cta-header:hover {
   transform: translateY(-2px) scale(1.02);
   box-shadow: 0 8px 30px var(--primary-glow);
+}
+
+.btn-icon,
+.cta-header .btn-icon {
+  flex-shrink: 0;
 }
 
 /* Hero */
@@ -219,7 +224,7 @@ h1, h2, h3, .hero-title, .section-title {
 }
 
 .hero-logo-img {
-  height: 120px;
+  height: 110px;
   width: auto;
   object-fit: contain;
 }
@@ -932,6 +937,12 @@ h1, h2, h3, .hero-title, .section-title {
   color: var(--gray-300);
   text-decoration: none;
   transition: color var(--transition);
+}
+
+.footer-download-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .footer a:hover {

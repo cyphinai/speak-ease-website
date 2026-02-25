@@ -40,6 +40,14 @@ function HeaderLogo() {
   );
 }
 
+function GooglePlayIcon({ size = 24, className = '' }) {
+  return (
+    <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z" />
+    </svg>
+  );
+}
+
 function App() {
   const [headerScrolled, setHeaderScrolled] = useState(false);
   const [activeScreen, setActiveScreen] = useState(0);
@@ -75,7 +83,7 @@ function App() {
     {
       id: 'home',
       title: "Today's plan",
-      copy: "Get a personalized daily plan: warm-up phrases, lessons with audio, conversation role-plays, and quick quizzes. Track your progress with streaks and see your plan complete in real time.",
+      copy: "Get a personalized daily plan with warm-up pronunciation, lessons like coffee ordering, conversation role-plays, and quick quizzes. Track 7-day streaks and weekly goals. Continue your lesson and see 1/4 complete progress in real time.",
       screenshot: '/assets/screens/home.png',
       mockup: (
         <div className="mockup-home app-content">
@@ -84,7 +92,7 @@ function App() {
           </div>
           <div className="mockup-greeting">Hi Zara, ready to learn?</div>
           <div className="mockup-sub">Your AI tutor prepared a focused plan today.</div>
-          <div className="mockup-plan-label">Today's plan · 1/4 complete</div>
+          <div className="mockup-plan-label">Today's plan · 1/4 complete · 5/33 min</div>
           <div className="mockup-plan-item" style={{ background: 'rgba(34,172,172,0.15)' }} />
           <div className="mockup-plan-item active" />
           <div className="mockup-plan-item" />
@@ -98,12 +106,12 @@ function App() {
     },
     {
       id: 'learn',
-      title: 'Lessons with audio',
-      copy: 'Practice real-world phrases with native-style audio. Ordering coffee, airport phrases, greetings, small talk – each lesson includes pronunciation tips, vocabulary, and a prompter that highlights lines as they play.',
+      title: 'Adaptive lessons',
+      copy: 'Lessons adjust to your pace and goals. Browse recommended lessons like Ordering Coffee Confidently, Travel Phrases for Airports, Cultural Tips: Greetings, and Small Talk with Coworkers—each with AI picks, duration, and difficulty.',
       screenshot: '/assets/screens/learn.png',
       mockup: (
         <div className="mockup-learn app-content">
-          <div className="mockup-section-label">Suggested lessons</div>
+          <div className="mockup-section-label">Recommended for you</div>
           <div className="mockup-lesson" />
           <div className="mockup-lesson" />
           <div className="mockup-lesson" />
@@ -112,51 +120,54 @@ function App() {
     },
     {
       id: 'practice',
-      title: 'AI tutor chat',
-      copy: 'Chat with your AI language coach anytime. Role-play scenarios, get feedback on your phrasing, and practice conversation in a low-pressure environment. Quick prompts help you start or deepen the conversation.',
+      title: 'Lesson player & prompter',
+      copy: 'Follow along with warm-up phrases, guided practice, role-play challenges, and quick recap quizzes. The prompter highlights phrases as they play so you can repeat after the audio. Pause and resume anytime.',
       screenshot: '/assets/screens/practice.png',
       mockup: (
         <div className="mockup-practice app-content">
-          <div className="mockup-chat-title">Practice with your AI tutor</div>
-          <div className="mockup-bubble ai">Try a role-play or ask for tips!</div>
-          <div className="mockup-bubble user">Let's practice ordering at a cafe.</div>
-          <div className="mockup-bubble ai">Great! Start with: "I'd like a latte, please."</div>
+          <div className="mockup-chat-title">Ordering Coffee Confidently</div>
+          <div className="mockup-bubble ai">Warm-up phrases · Guided practice · Role-play · Quiz</div>
+          <div className="mockup-bubble user">I'd like a cappuccino, please.</div>
+          <div className="mockup-bubble ai">Can I get a latte with almond milk?</div>
           <div className="mockup-input" />
         </div>
       ),
     },
     {
       id: 'progress',
-      title: 'Track your progress',
-      copy: 'See your weekly minutes, streaks, and achievements. Badges reward consistency and milestones. Set daily and weekly goals to stay motivated and build a lasting learning habit.',
+      title: 'Weekly progress',
+      copy: 'See your weekly minutes in a clear bar chart and unlock achievements like 50 words mastered, Perfect pronunciation, and Chatbot explorer. Track daily activity and stay motivated with milestones.',
       screenshot: '/assets/screens/progress.png',
       mockup: (
         <div className="mockup-progress app-content">
-          <div className="mockup-label">This week</div>
+          <div className="mockup-label">Weekly progress · 90 min total</div>
           <div className="mockup-bar">
             <div className="mockup-bar-fill" />
           </div>
-          <div className="mockup-label">Recent badges</div>
+          <div className="mockup-label">Achievements</div>
           <div className="mockup-badges">
-            <span className="mockup-badge">7-day streak</span>
-            <span className="mockup-badge">Pronunciation star</span>
+            <span className="mockup-badge">50 words mastered</span>
+            <span className="mockup-badge">Perfect pronunciation</span>
+            <span className="mockup-badge">Chatbot explorer</span>
           </div>
         </div>
       ),
     },
     {
       id: 'profile',
-      title: 'Profile & settings',
-      copy: 'Adjust learning goals, speech feedback, notifications, and privacy. Manage your account and preferences so the app adapts to how you learn best.',
+      title: 'Chat with your AI tutor',
+      copy: 'Pick a scenario and practice speaking naturally. Quick prompts for role-plays like cafe orders, airport check-in, and small talk. Live pronunciation feedback helps you improve with every conversation.',
       screenshot: '/assets/screens/profile.png',
       mockup: (
         <div className="mockup-profile app-content">
-          <div className="mockup-avatar">Z</div>
-          <div className="mockup-name">Zara Ahmed</div>
-          <div className="mockup-email">zara@speakease.ai</div>
-          <div className="mockup-row" />
-          <div className="mockup-row" />
-          <div className="mockup-row" />
+          <div className="mockup-chat-title">Chat with your AI tutor</div>
+          <div className="mockup-bubble ai">Hi! Pick a prompt or type a message to start practicing.</div>
+          <div className="mockup-badges">
+            <span className="mockup-badge">Role-play: cafe order</span>
+            <span className="mockup-badge">Airport check-in</span>
+            <span className="mockup-badge">Make small talk</span>
+          </div>
+          <div className="mockup-input" />
         </div>
       ),
     },
@@ -168,6 +179,7 @@ function App() {
         <div className="header-inner">
           <HeaderLogo />
           <a href="/app.apk" className="cta-header" download="SpeakEase.apk">
+            <GooglePlayIcon size={20} className="btn-icon" />
             Download App
           </a>
         </div>
@@ -209,6 +221,7 @@ function App() {
             </div>
             <div className="hero-buttons">
               <a href="/app.apk" className="btn btn-primary" download="SpeakEase.apk">
+                <GooglePlayIcon size={22} className="btn-icon" />
                 Download APK
               </a>
               <a href="#screens" className="btn btn-secondary">See app screens</a>
@@ -319,6 +332,7 @@ function App() {
           Download SpeakEase and start your language journey with an AI coach by your side.
         </p>
         <a href="/app.apk" className="btn btn-primary" download="SpeakEase.apk">
+          <GooglePlayIcon size={24} className="btn-icon" />
           Download APK for Android
         </a>
       </section>
@@ -327,7 +341,10 @@ function App() {
         <img src="/logo.png" alt="Speakease" className="footer-logo-img" />
         <p>AI-powered language learning</p>
         <div className="footer-links">
-          <a href="/app.apk" download="SpeakEase.apk">Download APK</a>
+          <a href="/app.apk" download="SpeakEase.apk" className="footer-download-link">
+          <GooglePlayIcon size={18} className="btn-icon" />
+          Download APK
+        </a>
         </div>
       </footer>
     </>
