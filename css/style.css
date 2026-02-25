@@ -473,10 +473,10 @@ h1, h2, h3, .hero-title, .section-title {
   display: block;
 }
 .phone-status-signal { width: 14px; height: 9px; }
-.phone-status-wifi  { width: 15px; height: 8px; }
+.phone-status-wifi  { width: 10px; height: 10px; }
 .phone-status-battery {
-  width: 10px;
-  height: 10px;
+  width: 20px;
+  height: 9px;
   color: #fff;
 }
 .phone-hero-body { flex: 1; min-height: 0; position: relative; }
